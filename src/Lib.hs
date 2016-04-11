@@ -9,9 +9,7 @@ build =
   shakeArgs shakeOptions {shakeThreads = 1
                          ,shakeVerbosity = Loud} $
   do staticRules
-     priority 2 $ lessRules
-     priority 2 $ elmRules
-     testRules
+     priority 2 $ mconcat [lessRules,elmRules,testRules]
      action $
        do need (toDist <$> ["app.js","main.css"])
           need ["test"]
