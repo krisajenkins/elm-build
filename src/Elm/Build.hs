@@ -1,4 +1,4 @@
-module Lib (build) where
+module Elm.Build (build) where
 
 import           Development.Shake
 import           Development.Shake.FilePath

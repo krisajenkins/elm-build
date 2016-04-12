@@ -11,13 +11,31 @@ copyright:           2016 Kris Jenkins
 category:            Web
 build-type:          Simple
 -- extra-source-files:
+data-files:          templates/default/.dir-locals.el
+                   , templates/default/.gitignore
+                   , templates/default/elm-package.json
+                   , templates/default/src/App.elm
+                   , templates/default/src/State.elm
+                   , templates/default/src/Types.elm
+                   , templates/default/src/View.elm
+                   , templates/default/static/index.html
+                   , templates/default/static/interop.js
+                   , templates/default/styles/main.less
+                   , templates/default/test/Main.elm
 cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     Elm.Build
+                     , Elm.Build.NewProject
+  other-modules:       Paths_elm_build
   build-depends:       base
+                     , directory
+                     , extra
+                     , formatting
+                     , mustache
                      , shake
+                     , text
   default-language:    Haskell2010
 
 executable elm-build
