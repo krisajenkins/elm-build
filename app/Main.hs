@@ -20,7 +20,6 @@ options =
 runCommand :: ([Flag],[String],[String]) -> IO ()
 runCommand ([],[],[]) = build
 runCommand ([NewProject rootDir],[],[]) = newProject rootDir
-
 runCommand (_,_,errors) =
   ioError (userError (concat errors <> usageInfo "USAGE: " options))
 

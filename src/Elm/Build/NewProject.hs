@@ -9,8 +9,9 @@ import           System.Directory.Extra
 
 copyTemplate :: FilePath -> IO ()
 copyTemplate fileName =
-  do sourceFile <- getDataFileName $ "templates"</>"default" </> fileName
-     createDirectoryIfMissing True (takeDirectory fileName)
+  do sourceFile <- getDataFileName $ "templates" </> "default" </> fileName
+     createDirectoryIfMissing True
+                              (takeDirectory fileName)
      copyFile sourceFile fileName
 
 newProject :: FilePath -> IO ()
