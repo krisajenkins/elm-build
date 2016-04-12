@@ -10,7 +10,9 @@ root : Address Action -> Model -> Html
 root address model =
   div
     []
-    [ text ("Counter: " ++ toString model.counter)
+    [ p
+        []
+        [ text ("Counter: " ++ toString model.counter) ]
     , button
         [ onClick address Increment ]
         [ text "Increment" ]
