@@ -19,15 +19,10 @@ newProject rootDir =
      createDirectory rootDir
      withCurrentDirectory rootDir $ mapM_ copyTemplate templateFiles
 
+templateFiles :: [FilePath]
 templateFiles =
-  [".dir-locals.el"
-  ,".gitignore"
-  ,"elm-package.json"
-  ,"src" </> "App.elm"
-  ,"src" </> "State.elm"
-  ,"src" </> "Types.elm"
-  ,"src" </> "View.elm"
-  ,"static" </> "index.html"
-  ,"static" </> "interop.js"
-  ,"styles" </> "main.less"
-  ,"test" </> "Main.elm"]
+  mconcat [[".dir-locals.el",".gitignore","elm-package.json"]
+          ,(("src" </>) <$> ["App.elm","State.elm","Types.elm","View.elm"])
+          ,(("static" </>) <$> ["index.html","interop.js"])
+          ,(("styles" </>) <$> ["main.less"])
+          ,(("test" </>) <$> ["Main.elm","StateTest.elm"])]

@@ -22,6 +22,7 @@ data-files:          templates/default/.dir-locals.el
                    , templates/default/static/interop.js
                    , templates/default/styles/main.less
                    , templates/default/test/Main.elm
+                   , templates/default/test/StateTest.elm
 cabal-version:       >=1.10
 
 library

@@ -1,15 +1,16 @@
 module Main (..) where
 
 import Console
-import Task exposing (Task)
 import ElmTest exposing (..)
+import StateTest
+import Task exposing (Task)
 
 
 tests : Test
 tests =
   suite
     "All"
-    []
+    [ StateTest.tests ]
 
 
 port runner : Signal (Task x ())
