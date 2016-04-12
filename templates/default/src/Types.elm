@@ -1,11 +1,9 @@
 module Types (..) where
 
-import Dict exposing (..)
-
 
 type Action
-  = NoOp
+  = Increment
 
 
 type alias Model =
-  {}
+  { counter : Int }

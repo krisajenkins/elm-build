@@ -3,12 +3,11 @@ module State (..) where
 import Types exposing (..)
 import Effects exposing (..)
 import Types exposing (..)
-import Dict
 
 
 initialModel : Model
 initialModel =
-  {}
+  { counter = 0 }
 
 
 initialEffects : Effects Action
@@ -18,4 +17,8 @@ initialEffects =
 
 update : Action -> Model -> ( Model, Effects Action )
 update action model =
-  ( model, none )
+  case action of
+    Increment ->
+      ( { model | counter = model.counter + 1 }
+      , none
+      )
