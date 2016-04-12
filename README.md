@@ -14,6 +14,8 @@ like Less compilation, minification, static file copying, etc.
 You must build from source, and you'll need [stack](https://github.com/commercialhaskell/stack).
 
 ```sh
+git clone https://github.com/krisajenkins/elm-build.git
+cd elm-build
 stack install
 ```
 
