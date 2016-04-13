@@ -24,3 +24,9 @@ stack install
 It's a sketch. I'm actively using, it; you're welcome to use it; but I
 can't promise it will flourish into the tool you'll be using two years
 from now...
+
+## License
+
+Copyright © 2016 Kris Jenkins
+
+Distributed under the MIT License.

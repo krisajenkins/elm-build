@@ -3,8 +3,8 @@ version:             0.1.0.0
 synopsis:            Initial project template from stack
 description:         Please see README.md
 homepage:            https://github.com/krisajenkins/elm-build#readme
-license:             BSD3
-license-file:        LICENSE
+license:             MIT
+license-file:        LICENSE.txt
 author:              Kris Jenkins
 maintainer:          krisajenkins@gmail.com
 copyright:           2016 Kris Jenkins
