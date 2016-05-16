@@ -1,7 +1,5 @@
-module State (..) where
+module State exposing (..)
 
-import Types exposing (..)
-import Effects exposing (..)
 import Types exposing (..)
 
 
@@ -10,15 +8,15 @@ initialModel =
   { counter = 0 }
 
 
-initialEffects : Effects Action
-initialEffects =
-  none
+initialCmd : Cmd Action
+initialCmd =
+  Cmd.none
 
 
-update : Action -> Model -> ( Model, Effects Action )
+update : Action -> Model -> ( Model, Cmd Action )
 update action model =
   case action of
     Increment ->
       ( { model | counter = model.counter + 1 }
-      , none
+      , Cmd.none
       )

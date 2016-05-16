@@ -63,5 +63,4 @@ testRules =
     (\tmpDir ->
        do let tmp = tmpDir </> "test.js"
           elmMake "test/Main.elm" tmp
-          liftIO $ appendFile tmp "var worker = Elm.worker(Elm.Main);"
           command [] "node" [tmp])

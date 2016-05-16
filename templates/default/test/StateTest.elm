@@ -1,4 +1,4 @@
-module StateTest (tests) where
+module StateTest exposing (tests)
 
 import Check exposing (..)
 import Check.Producer exposing (..)
@@ -10,8 +10,7 @@ import Types exposing (..)
 
 tests : Test
 tests =
-  ElmTest.suite
-    "State"
+  ElmTest.suite "State"
     [ updateTests
     , evidenceToTest (quickCheck updateClaims)
     ]
@@ -19,11 +18,9 @@ tests =
 
 updateTests : Test
 updateTests =
-  ElmTest.suite
-    "update"
+  ElmTest.suite "update"
     [ defaultTest
-        (assertEqual
-          { counter = 5 }
+        (assertEqual { counter = 5 }
           (fst (update Increment { counter = 4 }))
         )
     ]
@@ -31,10 +28,8 @@ updateTests =
 
 updateClaims : Claim
 updateClaims =
-  Check.suite
-    "update"
-    [ claim
-        "Increment adds one."
+  Check.suite "update"
+    [ claim "Increment adds one."
         `that` (\n -> { counter = n + 1 })
         `is` (\n -> (fst (update Increment { counter = n })))
         `for` int
