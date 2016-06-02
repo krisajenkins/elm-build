@@ -3,20 +3,22 @@ module State exposing (..)
 import Types exposing (..)
 
 
-initialModel : Model
-initialModel =
-  { counter = 0 }
+initialState : ( Model, Cmd Msg )
+initialState =
+    ( { counter = 0 }
+    , Cmd.none
+    )
 
 
-initialCmd : Cmd Action
-initialCmd =
-  Cmd.none
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
 
 
-update : Action -> Model -> ( Model, Cmd Action )
-update action model =
-  case action of
-    Increment ->
-      ( { model | counter = model.counter + 1 }
-      , Cmd.none
-      )
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        Increment ->
+            ( { model | counter = model.counter + 1 }
+            , Cmd.none
+            )

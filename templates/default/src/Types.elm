@@ -1,9 +1,9 @@
 module Types exposing (..)
 
 
-type Action
-  = Increment
+type Msg
+    = Increment
 
 
 type alias Model =
-  { counter : Int }
+    { counter : Int }

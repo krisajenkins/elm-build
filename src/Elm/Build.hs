@@ -62,5 +62,5 @@ testRules =
   withTempDir
     (\tmpDir ->
        do let tmp = tmpDir </> "test.js"
-          elmMake "test/Main.elm" tmp
+          elmMake "test/Test.elm" tmp
           command [] "node" [tmp])

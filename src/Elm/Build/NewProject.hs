@@ -26,4 +26,4 @@ templateFiles =
           ,("src" </>) <$> ["App.elm","State.elm","Types.elm","View.elm"]
           ,("static" </>) <$> ["index.html","interop.js"]
           ,("styles" </>) <$> ["main.less"]
-          ,("test" </>) <$> ["Main.elm","StateTest.elm"]]
+          ,("test" </>) <$> ["Test.elm","StateTest.elm"]]
