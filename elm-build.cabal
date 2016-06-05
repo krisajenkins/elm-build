@@ -12,6 +12,7 @@ category:            Web
 build-type:          Simple
 -- extra-source-files:
 data-files:          templates/default/.dir-locals.el
+                   , templates/default/.eslintrc.js
                    , templates/default/.gitignore
                    , templates/default/elm-package.json
                    , templates/default/src/App.elm
