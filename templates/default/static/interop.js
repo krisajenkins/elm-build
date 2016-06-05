@@ -1,4 +1,4 @@
-/*global Elm */
+/* global Elm */
 
 (function () {
     // Start the Elm App.
