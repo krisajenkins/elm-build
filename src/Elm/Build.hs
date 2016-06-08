@@ -63,4 +63,5 @@ testRules =
     (\tmpDir ->
        do let tmp = tmpDir </> "test.js"
           elmMake "test/Test.elm" tmp
+          command_ [] "sed" ["-i","''","1s/^/window = {};/", tmp]
           command [] "node" [tmp])
