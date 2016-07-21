@@ -1,5 +1,6 @@
 module Elm.Build (build) where
 
+import           Control.Monad
 import           Development.Shake
 import           Development.Shake.FilePath
 
@@ -9,11 +10,18 @@ build =
   shakeArgs shakeOptions {shakeThreads = 1
                          ,shakeVerbosity = Loud} $
   do staticRules
-     priority 2 $ mconcat [lessRules,elmRules,testRules]
+     priority 2 $ mconcat [styleRules,elmRules,purescriptRules,testRules]
      action $
-       do need (toDist <$> ["app.js","main.css"])
+       do whenFiles getElmFiles $ need [toDist "app.js"]
+          whenFiles getPurescriptFiles $ need [toDist "support.js"]
+          whenFiles getStyleFiles $ need [toDist "main.css"]
           need ["test"]
           needStatic
+
+whenFiles :: (Monad m, Foldable t) => m (t a) -> m () -> m ()
+whenFiles fileLookup fileAction =
+  do files <- fileLookup
+     when (not (null files)) fileAction
 
 needStatic :: Action ()
 needStatic =
@@ -32,24 +40,41 @@ staticRules =
      copyFileChanged ("static" </> dropDirectory1 out)
                      out)
 
-lessRules :: Rules ()
-lessRules =
+getStyleFiles :: Action [FilePath]
+getStyleFiles =
+          getDirectoryFiles ""
+                            ["styles//*.less","styles//*.css"]
+
+styleRules :: Rules ()
+styleRules =
   "dist/main.css" %>
   (\out ->
-     do files <-
-          getDirectoryFiles ""
-                            ["styles//*.less"]
-        need files
+     do getStyleFiles >>= need
         command [] "lessc" ["styles" </> dropDirectory1 out -<.> "less",out])
+
+getPurescriptFiles :: Action [FilePath]
+getPurescriptFiles =
+  getDirectoryFiles ""
+                    ["src//*.purs"]
+
+
+purescriptRules :: Rules ()
+purescriptRules =
+  "dist/support.js" %>
+  (\out ->
+     do getPurescriptFiles >>= need
+        command [] "pulp" ["browserify","--standalone","support","-t",out])
+
+getElmFiles :: Action [FilePath]
+getElmFiles =
+  getDirectoryFiles ""
+                    ["src//*.elm"]
 
 elmRules :: Rules ()
 elmRules =
   "dist/app.js" %>
   \out ->
-    do files <-
-         getDirectoryFiles ""
-                           ["src//*.elm","src//*.js"]
-       need files
+    do getElmFiles >>= need
        elmMake "src/App.elm" out
 
 elmMake :: FilePath -> FilePath -> Action ()
