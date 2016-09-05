@@ -1,6 +1,8 @@
 module Elm.Build (build) where
 
+import           ClassyPrelude
 import           Control.Monad
+import           Data.Foldable
 import           Development.Shake
 import           Development.Shake.FilePath
 
@@ -21,7 +23,7 @@ build =
 whenFiles :: (Monad m, Foldable t) => m (t a) -> m () -> m ()
 whenFiles fileLookup fileAction =
   do files <- fileLookup
-     when (not (null files)) fileAction
+     unless (Data.Foldable.null files) fileAction
 
 needStatic :: Action ()
 needStatic =

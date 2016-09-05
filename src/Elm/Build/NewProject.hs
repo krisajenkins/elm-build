@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Elm.Build.NewProject (newProject) where
 
+import           ClassyPrelude
 import           Development.Shake.FilePath
 import           Formatting
 import           Paths_elm_build

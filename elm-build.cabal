@@ -32,6 +32,7 @@ library
                      , Elm.Build.NewProject
   other-modules:       Paths_elm_build
   build-depends:       base
+                     , classy-prelude
                      , directory
                      , extra
                      , formatting
@@ -39,23 +40,29 @@ library
                      , shake
                      , text
   default-language:    Haskell2010
+  default-extensions:  NoImplicitPrelude
 
 executable elm-build
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
+                     , classy-prelude
                      , elm-build
+                     , text
   default-language:    Haskell2010
+  default-extensions:  NoImplicitPrelude
 
 test-suite elm-build-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
+                     , classy-prelude
                      , elm-build
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
+  default-extensions:  NoImplicitPrelude
 
 source-repository head
   type:     git

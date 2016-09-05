@@ -1,10 +1,11 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import           Data.Monoid
+import qualified Data.Text
+import           ClassyPrelude
 import           Elm.Build
 import           Elm.Build.NewProject
 import           System.Console.GetOpt
-import           System.Environment
 
 data Flag =
   NewProject FilePath
@@ -27,4 +28,4 @@ runCommand (_,_,errors) =
 main :: IO ()
 main =
   do args <- getArgs
-     runCommand (getOpt Permute options args)
+     runCommand (getOpt Permute options (Data.Text.unpack <$> args))
