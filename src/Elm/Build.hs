@@ -81,7 +81,9 @@ elmRules =
 
 elmMake :: FilePath -> FilePath -> Action ()
 elmMake root out =
-  command [] "elm-make" [root,"--yes","--warn","--output=" ++ out]
+  command_ []
+           "elm-make"
+           [root,"--yes","--warn","--output=" ++ out]
 
 testRules :: Rules ()
 testRules =
