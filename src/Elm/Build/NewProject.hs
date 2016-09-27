@@ -23,8 +23,14 @@ newProject rootDir =
 
 templateFiles :: [FilePath]
 templateFiles =
-  mconcat [[".dir-locals.el",".eslintrc.js",".gitignore","elm-package.json"]
-          ,("src" </>) <$> ["App.elm","State.elm","Types.elm","View.elm"]
-          ,("static" </>) <$> ["index.html","interop.js"]
-          ,("styles" </>) <$> ["main.less"]
-          ,("test" </>) <$> ["Test.elm","StateTest.elm"]]
+    mconcat
+        [ [".dir-locals.el", ".eslintrc.js", ".gitignore", "elm-package.json"]
+        , ("src" </>) <$> ["App.elm", "State.elm", "Types.elm", "View.elm"]
+        , ("static" </>) <$> ["index.html", "interop.js"]
+        , ("styles" </>) <$> ["main.less"]
+        , ("tests" </>) <$>
+          [ ".gitignore"
+          , "Main.elm"
+          , "StateTest.elm"
+          , "Tests.elm"
+          , "elm-package.json"]]

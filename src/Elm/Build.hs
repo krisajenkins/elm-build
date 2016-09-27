@@ -86,12 +86,4 @@ elmMake root out =
            [root,"--yes","--warn","--output=" ++ out]
 
 testRules :: Rules ()
-testRules =
-  phony "test" $
-  withTempDir
-    (\tmpDir ->
-       do let tmp = tmpDir </> "test.js"
-          elmMake "test/Test.elm" tmp
-          command_ [] "sed" ["-i","''","1s/^/window = {};/",tmp]
-          command_ [] "sed" ["-i","''","1s/^/document = {};/",tmp]
-          command_ [] "node" [tmp])
+testRules = phony "test" $ command_ [] "elm-test" []

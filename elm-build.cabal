@@ -22,8 +22,12 @@ data-files:          templates/default/.dir-locals.el
                    , templates/default/static/index.html
                    , templates/default/static/interop.js
                    , templates/default/styles/main.less
-                   , templates/default/test/Test.elm
-                   , templates/default/test/StateTest.elm
+                   , templates/default/tests/.gitignore
+                   , templates/default/tests/Main.elm
+                   , templates/default/tests/StateTest.elm
+                   , templates/default/tests/Tests.elm
+                   , templates/default/tests/elm-package.json
+
 cabal-version:       >=1.10
 
 library
